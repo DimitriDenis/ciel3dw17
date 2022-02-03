@@ -1,7 +1,27 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
+import { InputType, Int, Field, ID, ObjectType } from '@nestjs/graphql';
 
 @InputType()
 export class CreateWishlistInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Field()
+  userId: string;
+
+  @Field()
+  url: string;
+
+  @Field()
+  title: string;
+}
+
+
+@ObjectType()
+export class Wishlist {
+
+  @Field(() => ID)
+  userId: string;
+
+  @Field()
+  url: string;
+
+  @Field()
+  title: string;
 }
