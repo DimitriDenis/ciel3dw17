@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Wishlist {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  wishlist(id: Int!): Wishlist!
+}
+
+type Mutation {
+  createWishlist(createWishlistInput: CreateWishlistInput!): Wishlist!
+  updateWishlist(updateWishlistInput: UpdateWishlistInput!): Wishlist!
+  removeWishlist(id: Int!): Wishlist!
+}
+
+input CreateWishlistInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateWishlistInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
