@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { WishlistService } from './wishlist.service';
-import { Wishlist } from './entities/wishlist.entity';
+import { Wishlist } from './schema/wishlist.schema';
 import { CreateWishlistInput } from './dto/create-wishlist.input';
 import { UpdateWishlistInput } from './dto/update-wishlist.input';
 
@@ -19,17 +19,17 @@ export class WishlistResolver {
   }
 
   @Query(() => Wishlist, { name: 'wishlist' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.wishlistService.findOne(id);
+  findOne(@Args('id', { type: () => Int }) userId: string) {
+    return this.wishlistService.findOne(userId);
   }
 
   @Mutation(() => Wishlist)
   updateWishlist(@Args('updateWishlistInput') updateWishlistInput: UpdateWishlistInput) {
-    return this.wishlistService.update(updateWishlistInput.id, updateWishlistInput);
+    return this.wishlistService.update(updateWishlistInput.userId, updateWishlistInput);
   }
 
   @Mutation(() => Wishlist)
-  removeWishlist(@Args('id', { type: () => Int }) id: number) {
-    return this.wishlistService.remove(id);
+  removeWishlist(@Args('id', { type: () => String }) userId: string) {
+    return this.wishlistService.remove(userId);
   }
 }
